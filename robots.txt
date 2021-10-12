@@ -1,0 +1,17 @@
+User-Agent: *
+Disallow: *?tags=*
+Disallow: *?PAGEN*
+Disallow: *admin*
+Disallow: *utm*
+Disallow: /xmlrpc*
+Disallow: /services/diagnostika/
+Disallow: *?p*
+Disallow: */s-implantatsiya/$
+Disallow: */s-brekety/$
+Disallow: */s-viniry/$
+Disallow: */udalenie-zubov/$
+Disallow: *?cm_*
+Disallow: *?back*
+Disallow: *_include*
+Disallow: *url*
+Disallow: *email*

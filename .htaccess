@@ -1,0 +1,88 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+
+<IfModule mod_php5.c>
+  php_flag session.use_trans_sid off
+  php_flag default_charset UTF-8
+  php_flag mbstring.func_overload=2
+  php_flag mbstring.internal_encoding=""
+  #php_value display_errors 1
+</IfModule>
+
+<IfModule mod_php7.c>
+    php_flag session.use_trans_sid off
+    #php_flag default_charset UTF-8
+    php_value   default_charset UTF-8
+    php_value   default_socket_timeout 60
+    php_value   max_input_vars 10000
+    #php_value display_errors 1
+</IfModule>
+
+<IfModule mod_rewrite.c>
+
+    Options +FollowSymLinks
+    RewriteEngine On
+
+
+
+ RewriteCond %{HTTP_HOST} ^www\.(.*)$
+ RewriteRule ^(.*)$ https://%1/$1 [L,R=301]
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-l
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+    RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+    RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+
+
+    RewriteCond %{REQUEST_URI} !\?
+    RewriteCond %{REQUEST_URI} !\&
+    RewriteCond %{REQUEST_URI} !\=
+    RewriteCond %{REQUEST_URI} !\.
+    RewriteCond %{REQUEST_URI} !\/$
+    RewriteRule ^(.*[^\/])$ /$1/ [R=301,L]
+
+    Redirect 301 /правильное-питание/ /
+    Redirect 301 /правильное-питание-2/ /blog/
+    Redirect 301 /diplomy-i-sertifikaty/ /doctors/
+    Redirect 301 /лечение-кариеса-без-бормашины/ /blog/
+    Redirect 301 /статьи/ /blog/
+    Redirect 301 /бруксизм-у-детей-и-взрослых/ /blog/
+    Redirect 301 /zubnaya-nit/ /
+    Redirect 301 /контакты/ /contacts/
+    Redirect 301 /отзывы/ /
+    Redirect 301 /лечение-кариеса/ /
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType image/jpeg "access plus 3 day"
+    ExpiresByType image/gif "access plus 3 day"
+    ExpiresByType image/png "access plus 3 day"
+    ExpiresByType text/css "access plus 3 day"
+    ExpiresByType application/javascript "access plus 3 day"
+</IfModule>
+
+# Включаем кэш в браузерах посетителей
+<ifModule mod_headers.c>
+    # Все html и htm файлы будут храниться в кэше браузера один день
+    <FilesMatch "\.(html|htm)$">
+        Header set Cache-Control "max-age=43200"
+    </FilesMatch>
+    # Все css, javascript и текстовые файлы будут храниться в кэше браузера одну неделю
+    <FilesMatch "\.(js|css|txt)$">
+        Header set Cache-Control "max-age=604800"
+    </FilesMatch>
+    # Все флэш файлы и изображения будут храниться в кэше браузера один месяц
+    <FilesMatch "\.(flv|swf|ico|gif|jpg|jpeg|png|webp|cur)$">
+        Header set Cache-Control "max-age=2592000"
+    </FilesMatch>
+    # Отключаем кеширование php и других служебных файлов
+    <FilesMatch "\.(pl|php|cgi|spl|scgi|fcgi)$">
+        Header unset Cache-Control
+    </FilesMatch>
+</IfModule>

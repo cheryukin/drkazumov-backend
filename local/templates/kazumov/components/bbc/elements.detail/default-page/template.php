@@ -1,0 +1,1 @@
+<?=$arResult['DETAIL_TEXT'];

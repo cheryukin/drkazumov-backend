@@ -1,0 +1,145 @@
+
+/*
+================================================================================
+|                                     FOOTER                                   |
+================================================================================
+*/
+
+.footer{
+    background: $gradient-dark;
+    position: relative;  
+    padding: 40px 0 20px;
+    color: $color-white;
+    
+    &__nav{
+        width: 475px;
+        padding-right: 65px;
+        .y-row{
+            @include justify-content(space-between);
+        }
+        .y-col{
+            width: auto;
+        }
+    }
+    &__title{
+        margin-bottom: 20px;
+    }
+    
+    &-nav{
+        &-item{
+            margin-bottom: 10px;
+            &:last-child{
+                margin-bottom: 0;
+            }
+            &__link{
+                color: $color-white;                
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+    
+    &__copy{
+        padding-top: 60px;
+    }
+    
+    &__bottom{
+        .y-row{
+            @include flex-direction(row-reverse);
+            @include justify-content(space-between);
+        }
+        .y-col{
+            width: auto;
+        }
+    }
+    &__contact{
+        margin-top: -50px;
+    }
+    
+    &__phone{
+        color: $color-white;
+        display: inline-block;
+        margin-bottom: 15px;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+    &__mail{
+        color: $color-white;
+        display: inline-block;
+        margin-bottom: 15px;
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+  
+}
+
+
+@media screen and (max-width: 1199px) {
+   
+}
+
+@media screen and (max-width: 991px) {
+    .footer__bottom .y-row{
+        @include flex-direction(column);
+    }
+    .footer__nav{
+        padding-bottom: 40px;
+    }
+    .footer__contact {
+        margin-top: 0;
+    }
+    .footer__copy{
+      
+    }
+    .footer__copy {
+        padding-top: 3px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 740px) {
+    
+}
+
+@media screen and (max-width: 639px) {
+    
+   
+    
+    
+}
+
+@media screen and (max-width: 479px) {
+    .footer__nav{
+        width: 100%;
+        padding: 0 10px 8px;
+    }
+    .footer{
+            padding-top: 30px;
+        padding-bottom: 30px;
+    }
+    .footer__title {
+        margin-bottom: 10px;
+    }
+    .footer-nav{
+        margin-bottom: 10px;
+    }
+    .footer__bottom{
+        padding: 0 10px;
+    }
+    .footer__phone{
+        margin-bottom: 11px;
+    }
+    .footer__mail{
+        margin-bottom: 10px;
+    }
+    .footer__nav .y-col {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 374px) {
+    
+}
